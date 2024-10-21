@@ -8,9 +8,9 @@ import Layout from './Components/Layout'
 
 const defaultTodos = [
   { text: 'Aprender React JS', completed: true },
-  { text: 'Aprender JavaScript', completed: true },
+  { text: 'Aprender JavaScript', completed: false },
   { text: 'Aprender Node JS', completed: true },
-  { text: 'Aprender typeScript', completed: true },
+  { text: 'Aprender typeScript', completed: false },
 ]
 
 function App() {

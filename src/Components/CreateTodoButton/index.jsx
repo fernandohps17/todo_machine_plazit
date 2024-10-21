@@ -1,11 +1,11 @@
 import React from 'react'
-import { GoPlus } from "react-icons/go";
+import { FaPlus } from "react-icons/fa";
 import './CreateTodoButton.scss'
 
 const CreateTodoButton = () => {
     return (
         <button className='create_todo_button'>
-            <GoPlus />
+            <FaPlus />
         </button>
     )
 }
