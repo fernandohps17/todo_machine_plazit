@@ -3,7 +3,7 @@ import TodoItem from '../TodoItem'
 
 const TodoList = (props) => {
   return (
-    <div>
+    <div className='todo_item_spacing'>
       {props.children}      
     </div>
   )

@@ -1,9 +1,10 @@
 import React from 'react'
+import './TodoCounter.scss'
 
 const TodoCounter = ({total, completed}) => {
     return (
-        <div>
-            <h1>Has completado {completed} de {total} TODOS</h1>
+        <div className='todo_counter'>
+            <p>Has completado <span>{completed}</span> de <span>{total}</span> TODOS</p>
         </div>
     )
 }
