@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './TodoSearch.scss'
 
-const TodoSearch = () => {
+const TodoSearch = ({searchValue, setSearchValue}) => {
 
   return (
-    <input className='todo_search' onChange={(event) => {console.log(event.target.value)}} type="text" placeholder='Escribe la activadad por hacer' />
+    <input className='todo_search' value={searchValue} onChange={(event) => {setSearchValue(event.target.value)}} type="text" placeholder='Escribe la activadad por hacer' />
   )
 }
 

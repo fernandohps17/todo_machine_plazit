@@ -4,7 +4,7 @@ import './CreateTodoButton.scss'
 
 const CreateTodoButton = () => {
     return (
-        <button className='create_todo_button'>
+        <button className='create_todo_button' onClick={(event) => {console.log(event.target)}}>
             <FaPlus />
         </button>
     )
