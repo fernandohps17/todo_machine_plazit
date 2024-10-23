@@ -6,16 +6,47 @@ import TodoSearch from './Components/TodoSearch'
 import TodoItem from './Components/TodoItem'
 import Layout from './Components/Layout'
 
-const defaultTodos = [
-  { text: 'Aprender React JS', completed: true },
-  { text: 'Aprender JavaScript', completed: false },
-  { text: 'Aprender Node JS', completed: true },
-  { text: 'Aprender typeScript', completed: false },
-]
+// const defaultTodos = [
+//   { text: 'Aprender React JS', completed: true },
+//   { text: 'Aprender JavaScript', completed: false },
+//   { text: 'Aprender Node JS', completed: true },
+//   { text: 'Aprender typeScript', completed: false },
+// ]
+// const stringifiedTodos = JSON.stringify(defaultTodos)
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos))
+// localStorage.removeItem('TODOS_V1')
+
+function useLocalStorage(itemName, initialValue) {
+
+  const localStorageItem = localStorage.getItem(itemName);
+
+  let parsedItem;
+
+  if (!localStorageItem) {
+    localStorage.setItem('TODOS_V1', JSON.stringify(initialValue));
+    parsedItem = initialValue;
+  } else {
+    parsedItem = JSON.parse(localStorageItem)
+  }
+
+  const [item, setItem] = useState(parsedItem)
+
+  const saveItem = (newItem) => {
+    localStorage.setItem('TODOS_V1', JSON.stringify(newItem))
+    setItem(newItem)
+  }
+
+  return [item, saveItem];
+
+}
+
+
+
+
 
 function App() {
-
-  const [todos, setTodos] = useState(defaultTodos)
+  // setTodo es el saveItem que retono del localStorage
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', [])
   const [searchValue, setSearchValue] = useState('')
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -33,7 +64,7 @@ function App() {
       (todo) => todo.text == text
     );
     newTodos[todoIndex].completed = true;
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   const deleteTodo = (text) => {
@@ -42,9 +73,8 @@ function App() {
       (todo) => todo.text == text
     );
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
-
 
   return (
     <>
