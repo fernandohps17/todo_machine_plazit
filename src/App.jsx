@@ -37,15 +37,11 @@ function useLocalStorage(itemName, initialValue) {
   }
 
   return [item, saveItem];
-
 }
 
 
-
-
-
 function App() {
-  // setTodo es el saveItem que retono del localStorage
+  // setTodo es el saveItem que retorno del localStorage
   const [todos, saveTodos] = useLocalStorage('TODOS_V1', [])
   const [searchValue, setSearchValue] = useState('')
 
@@ -95,5 +91,4 @@ function App() {
 }
 
 export default App
-
-// clase 16
+// clase 19
