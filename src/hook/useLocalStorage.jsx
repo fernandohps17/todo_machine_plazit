@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 function useLocalStorage(itemName, initialValue) {
 
     const localStorageItem = localStorage.getItem(itemName);
@@ -21,3 +23,5 @@ function useLocalStorage(itemName, initialValue) {
     return [item, saveItem];
 
 }
+
+export { useLocalStorage };
