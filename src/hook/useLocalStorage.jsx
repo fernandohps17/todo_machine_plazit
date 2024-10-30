@@ -38,4 +38,3 @@ function useLocalStorage(itemName, initialValue) {
 }
 
 export { useLocalStorage };
-// clase 21
