@@ -4,7 +4,7 @@ import AppUI from './AppUI'
 
 function App() {
   // setTodo es el saveItem que retorno del localStorage
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', [])
+  const {item: todos, saveItem: saveTodos, loading, error} = useLocalStorage('TODOS_V1', [])
   const [searchValue, setSearchValue] = useState('')
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -43,9 +43,10 @@ function App() {
     searchedTodos={searchedTodos}
     completeTodo={completeTodo}
     deleteTodo={deleteTodo}
+    loading={loading}
+    error={error}
     />
   )
 }
 
 export default App
-// clase 18

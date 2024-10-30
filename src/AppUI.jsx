@@ -13,7 +13,9 @@ const AppUI = ({
     setSearchValue,
     searchedTodos,
     completeTodo,
-    deleteTodo
+    deleteTodo,
+    loading,
+    error
 }) => {
     return (
         <>
@@ -21,6 +23,9 @@ const AppUI = ({
                 <TodoCounter total={totalTodos} completed={completedTodos} />
                 <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
                 <TodoList>
+                    {loading && <p>Estamos cargando...</p>}
+                    {error && <p>Desesperate, hay un error</p>}
+                    {(!loading && searchedTodos.length === 0) && <p>Crea tu primer TODO!</p>}
                     {
                         searchedTodos.map(todo => (
                             <TodoItem key={todo.text} text={todo.text} completed={todo.completed} onComplete={() => completeTodo(todo.text)} onDelete={() => deleteTodo(todo.text)} />
