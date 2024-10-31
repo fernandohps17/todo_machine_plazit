@@ -9,6 +9,8 @@ import TodosLoading from './Components/TodosLoading'
 import TodosError from './Components/TodosError'
 import EmptyTodos from './Components/EmptyTodos'
 import { TodoContext } from './Context'
+import Modal from './Components/Modal'
+import TodoFrom from './Components/TodoFrom'
 
 const AppUI = () => {
 
@@ -17,7 +19,8 @@ const AppUI = () => {
         error,
         searchedTodos,
         completeTodo,
-        deleteTodo
+        deleteTodo,
+        openModal,
     } = useContext(TodoContext)
 
     return (
@@ -42,11 +45,15 @@ const AppUI = () => {
                 </TodoContext.Consumer>
 
                 <CreateTodoButton />
+
+                {openModal && (
+                    <Modal>
+                        <TodoFrom />
+                    </Modal>
+                )}
             </Layout>
         </>
     )
 }
 
 export default AppUI
-
-// clase 24
